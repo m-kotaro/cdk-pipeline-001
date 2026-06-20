@@ -26,7 +26,8 @@ export class PipelineStack extends cdk.Stack {
       pipelineName: `cp-${pj}-deploy`,
       synth: new ShellStep("Synth", {
         input: source,
-        commands: ["npm ci", "npx cdk synth"],
+        commands: ["cd cdk", "npm ci", "npx cdk synth"],
+        primaryOutputDirectory: "cdk/cdk.out",
       }),
     });
 
