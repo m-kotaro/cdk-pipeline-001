@@ -3,6 +3,9 @@ import { Construct } from "constructs";
 import * as s3 from "aws-cdk-lib/aws-s3";
 import * as cloudfront from "aws-cdk-lib/aws-cloudfront";
 import * as cloudfront_origins from "aws-cdk-lib/aws-cloudfront-origins";
+import * as acm from "aws-cdk-lib/aws-certificatemanager";
+import * as route53 from "aws-cdk-lib/aws-route53";
+import * as route53_targets from "aws-cdk-lib/aws-route53-targets";
 import { config, StageName } from "./config";
 
 export interface StaticSiteStackProps extends cdk.StackProps {
@@ -15,6 +18,21 @@ export class StaticSiteStack extends cdk.Stack {
 
     const { stageName } = props;
     const pj = config.projectName;
+    const domainName = `${stageName}.${config.domainName}`;
+
+    // Import Hosted Zone ID from CloudFormation export
+    const hostedZoneId = cdk.Fn.importValue(`${pj}-${stageName}-hostedzone-id`);
+    const hostedZone = route53.HostedZone.fromHostedZoneAttributes(this, "HostedZone", {
+      hostedZoneId,
+      zoneName: domainName,
+    });
+
+    // ACM Certificate in us-east-1 (required for CloudFront)
+    const certificate = new acm.DnsValidatedCertificate(this, "Certificate", {
+      domainName,
+      hostedZone,
+      region: "us-east-1",
+    });
 
     // S3 Bucket: s3-[env]-[project]-site
     const siteBucket = new s3.Bucket(this, "SiteBucket", {
@@ -27,6 +45,8 @@ export class StaticSiteStack extends cdk.Stack {
     // CloudFront Distribution: cf-[env]-[project]-site
     const distribution = new cloudfront.Distribution(this, "Distribution", {
       comment: `cf-${stageName}-${pj}-site`,
+      domainNames: [domainName],
+      certificate,
       defaultRootObject: "index.html",
       defaultBehavior: {
         origin:
@@ -51,13 +71,22 @@ export class StaticSiteStack extends cdk.Stack {
       ],
     });
 
+    // Route 53 A Record (alias to CloudFront)
+    new route53.ARecord(this, "AliasRecord", {
+      zone: hostedZone,
+      recordName: domainName,
+      target: route53.RecordTarget.fromAlias(
+        new route53_targets.CloudFrontTarget(distribution)
+      ),
+    });
+
     // Outputs
     new cdk.CfnOutput(this, "BucketName", {
       value: siteBucket.bucketName,
     });
 
-    new cdk.CfnOutput(this, "DistributionDomainName", {
-      value: distribution.distributionDomainName,
+    new cdk.CfnOutput(this, "DomainName", {
+      value: domainName,
     });
 
     new cdk.CfnOutput(this, "DistributionId", {

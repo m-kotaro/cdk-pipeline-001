@@ -3,6 +3,7 @@ export const config = {
   region: "ap-northeast-1",
   repository: "m-kotaro/cdk-pipeline-001",
   branch: "main",
+  domainName: "example.com", // TODO: replace with your domain
   stages: {
     dev: "dev",
     prd: "prd",
