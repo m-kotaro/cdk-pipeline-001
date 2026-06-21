@@ -5,7 +5,7 @@ import { config } from "../lib/config";
 
 const app = new cdk.App();
 
-new PipelineStack(app, config.projectName, {
+new PipelineStack(app, `stack-${config.projectName}-pipeline`, {
   env: {
     account: process.env.CDK_DEFAULT_ACCOUNT,
     region: config.region,
