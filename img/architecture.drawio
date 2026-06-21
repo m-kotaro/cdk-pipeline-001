@@ -1,0 +1,139 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="arch" name="Architecture">
+    <mxGraphModel dx="1404" dy="751" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- AWS Cloud -->
+        <mxCell id="2" parent="1" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=12;fontStyle=1;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_aws_cloud;stroke=#232F3E;fillColor=none;verticalAlign=top;align=left;spacingLeft=30;fontColor=#232F3E;dashed=0;" value="AWS Cloud" vertex="1">
+          <mxGeometry height="680" width="900" x="160" y="30" as="geometry" />
+        </mxCell>
+
+        <!-- GitHub -->
+        <mxCell id="3" parent="1" style="shape=image;verticalLabelPosition=bottom;labelBackgroundColor=default;verticalAlign=top;aspect=fixed;imageAspect=0;image=https://cdn-icons-png.flaticon.com/512/25/25231.png;fontStyle=1;fontSize=11;" value="GitHub" vertex="1">
+          <mxGeometry height="60" width="60" x="40" y="100" as="geometry" />
+        </mxCell>
+
+        <!-- CodePipeline -->
+        <mxCell id="4" parent="1" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#C925D1;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.codepipeline;" value="&lt;span style=&quot;font-size: 10px; font-weight: 700;&quot;&gt;CodePipeline&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size: 10px; font-weight: 700;&quot;&gt;cp-cp001-deploy&lt;/span&gt;" vertex="1">
+          <mxGeometry height="48" width="48" x="560" y="60" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow: GitHub -> Pipeline -->
+        <mxCell id="5" edge="1" parent="1" source="3" target="4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#232F3E;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="6" connectable="0" parent="5" style="edgeLabel;html=1;align=center;verticalAlign=middle;fontSize=9;" value="push to main" vertex="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Dev Stage -->
+        <mxCell id="7" parent="1" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=12;fontStyle=1;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_account;stroke=#00A4A6;fillColor=none;verticalAlign=top;align=left;spacingLeft=30;fontColor=#00A4A6;dashed=0;" value="Dev Stage" vertex="1">
+          <mxGeometry height="280" width="380" x="190" y="240" as="geometry" />
+        </mxCell>
+
+        <!-- Dev Route 53 -->
+        <mxCell id="20" parent="1" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#8C4FFF;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.route_53;" value="&lt;span style=&quot;font-size: 9px; font-weight: 700;&quot;&gt;Route 53&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size: 9px; font-weight: 700;&quot;&gt;dev.example.com&lt;/span&gt;" vertex="1">
+          <mxGeometry height="48" width="48" x="230" y="300" as="geometry" />
+        </mxCell>
+
+        <!-- Dev ACM -->
+        <mxCell id="21" parent="1" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#DD344C;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.certificate_manager;" value="&lt;span style=&quot;font-size: 9px; font-weight: 700;&quot;&gt;ACM&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size: 9px; font-weight: 700;&quot;&gt;(us-east-1)&lt;/span&gt;" vertex="1">
+          <mxGeometry height="48" width="48" x="350" y="300" as="geometry" />
+        </mxCell>
+
+        <!-- Dev CloudFront -->
+        <mxCell id="9" parent="1" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#8C4FFF;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.cloudfront;" value="&lt;span style=&quot;font-size: 9px; font-weight: 700;&quot;&gt;CloudFront&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size: 9px; font-weight: 700;&quot;&gt;cf-dev-cp001-site&lt;/span&gt;" vertex="1">
+          <mxGeometry height="48" width="48" x="470" y="300" as="geometry" />
+        </mxCell>
+
+        <!-- Dev S3 -->
+        <mxCell id="8" parent="1" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#7AA116;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;" value="&lt;span style=&quot;font-size: 9px; font-weight: 700;&quot;&gt;S3&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size: 9px; font-weight: 700;&quot;&gt;s3-dev-cp001-site&lt;/span&gt;" vertex="1">
+          <mxGeometry height="48" width="48" x="470" y="420" as="geometry" />
+        </mxCell>
+
+        <!-- Dev: Route53 -> CloudFront -->
+        <mxCell id="22" edge="1" parent="1" source="20" target="9" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#232F3E;fontSize=9;" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Dev: ACM -> CloudFront -->
+        <mxCell id="23" edge="1" parent="1" source="21" target="9" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#232F3E;fontSize=9;dashed=1;" value="cert">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Dev: CloudFront -> S3 -->
+        <mxCell id="10" edge="1" parent="1" source="9" target="8" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#232F3E;fontSize=9;" value="OAC">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Prd Stage -->
+        <mxCell id="11" parent="1" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=12;fontStyle=1;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_account;stroke=#E07941;fillColor=none;verticalAlign=top;align=left;spacingLeft=30;fontColor=#E07941;dashed=0;" value="Prd Stage" vertex="1">
+          <mxGeometry height="280" width="380" x="640" y="240" as="geometry" />
+        </mxCell>
+
+        <!-- Prd Route 53 -->
+        <mxCell id="24" parent="1" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#8C4FFF;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.route_53;" value="&lt;span style=&quot;font-size: 9px; font-weight: 700;&quot;&gt;Route 53&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size: 9px; font-weight: 700;&quot;&gt;prd.example.com&lt;/span&gt;" vertex="1">
+          <mxGeometry height="48" width="48" x="680" y="300" as="geometry" />
+        </mxCell>
+
+        <!-- Prd ACM -->
+        <mxCell id="25" parent="1" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#DD344C;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.certificate_manager;" value="&lt;span style=&quot;font-size: 9px; font-weight: 700;&quot;&gt;ACM&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size: 9px; font-weight: 700;&quot;&gt;(us-east-1)&lt;/span&gt;" vertex="1">
+          <mxGeometry height="48" width="48" x="800" y="300" as="geometry" />
+        </mxCell>
+
+        <!-- Prd CloudFront -->
+        <mxCell id="13" parent="1" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#8C4FFF;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.cloudfront;" value="&lt;span style=&quot;font-size: 9px; font-weight: 700;&quot;&gt;CloudFront&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size: 9px; font-weight: 700;&quot;&gt;cf-prd-cp001-site&lt;/span&gt;" vertex="1">
+          <mxGeometry height="48" width="48" x="920" y="300" as="geometry" />
+        </mxCell>
+
+        <!-- Prd S3 -->
+        <mxCell id="12" parent="1" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#7AA116;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;" value="&lt;span style=&quot;font-size: 9px; font-weight: 700;&quot;&gt;S3&lt;/span&gt;&lt;br&gt;&lt;span style=&quot;font-size: 9px; font-weight: 700;&quot;&gt;s3-prd-cp001-site&lt;/span&gt;" vertex="1">
+          <mxGeometry height="48" width="48" x="920" y="420" as="geometry" />
+        </mxCell>
+
+        <!-- Prd: Route53 -> CloudFront -->
+        <mxCell id="26" edge="1" parent="1" source="24" target="13" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#232F3E;fontSize=9;" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Prd: ACM -> CloudFront -->
+        <mxCell id="27" edge="1" parent="1" source="25" target="13" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#232F3E;fontSize=9;dashed=1;" value="cert">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Prd: CloudFront -> S3 -->
+        <mxCell id="14" edge="1" parent="1" source="13" target="12" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#232F3E;fontSize=9;" value="OAC">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow: Pipeline -> Dev -->
+        <mxCell id="15" edge="1" parent="1" source="4" target="7" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#232F3E;fontSize=9;" value="deploy">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow: Pipeline -> Prd -->
+        <mxCell id="16" edge="1" parent="1" source="4" target="11" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#232F3E;fontSize=9;" value="manual approval&#xa;+ deploy">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- User -->
+        <mxCell id="17" parent="1" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#232F3E;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;fontStyle=1;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.users;" value="User" vertex="1">
+          <mxGeometry height="48" width="48" x="40" y="560" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow: User -> Dev Route53 -->
+        <mxCell id="18" edge="1" parent="1" source="17" target="20" style="edgeStyle=orthogonalEdgeStyle;rounded=1;dashed=1;strokeColor=#666666;fontSize=9;" value="HTTPS">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Arrow: User -> Prd Route53 -->
+        <mxCell id="19" edge="1" parent="1" source="17" target="24" style="edgeStyle=orthogonalEdgeStyle;rounded=1;dashed=1;strokeColor=#666666;fontSize=9;" value="HTTPS">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
