@@ -34,16 +34,16 @@ export class StaticSiteStack extends cdk.Stack {
       region: "us-east-1",
     });
 
-    // S3 Bucket: s3-[env]-[project]-site
+    // S3 Bucket: s3-[project]-[env]-site
     const siteBucket = new s3.Bucket(this, "SiteBucket", {
-      bucketName: `s3-${stageName}-${pj}-site`,
+      bucketName: `s3-${pj}-${stageName}-site`,
       blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL,
       encryption: s3.BucketEncryption.S3_MANAGED,
     });
 
-    // CloudFront Distribution: cf-[env]-[project]-site
+    // CloudFront Distribution: cf-[project]-[env]-site
     const distribution = new cloudfront.Distribution(this, "Distribution", {
-      comment: `cf-${stageName}-${pj}-site`,
+      comment: `cf-${pj}-${stageName}-site`,
       domainNames: [domainName],
       certificate,
       defaultRootObject: "index.html",

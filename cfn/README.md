@@ -53,7 +53,7 @@ export PROJECT_NAME=cp001
 export DOMAIN_NAME=example.com
 
 aws cloudformation create-stack \
-  --stack-name stack-${ENV}-${PROJECT_NAME}-hostedzone \
+  --stack-name stack-${PROJECT_NAME}-${ENV}-hostedzone \
   --template-body file://cfn/hostedzone.yaml \
   --parameters \
     ParameterKey=Env,ParameterValue=${ENV} \
