@@ -2,11 +2,6 @@ AWSTemplateFormatVersion: "2010-09-09"
 Description: CodeConnection for GitHub (requires manual approval in Console after deploy)
 
 Parameters:
-  Env:
-    Type: String
-    AllowedValues:
-      - dev
-      - prd
   ProjectName:
     Type: String
     Default: cp001
@@ -15,7 +10,7 @@ Resources:
   GitHubConnection:
     Type: AWS::CodeConnections::Connection
     Properties:
-      ConnectionName: !Sub codeconnection-${Env}-${ProjectName}-github
+      ConnectionName: !Sub codeconnection-${ProjectName}-github
       ProviderType: GitHub
 
 Outputs:
