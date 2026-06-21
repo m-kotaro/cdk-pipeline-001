@@ -11,8 +11,9 @@ export class AppStage extends cdk.Stage {
   constructor(scope: Construct, id: string, props: AppStageProps) {
     super(scope, id, props);
 
-    new StaticSiteStack(this, `${config.projectName}-${props.stageName}-static-site`, {
+    new StaticSiteStack(this, `stack-${config.projectName}-${props.stageName}-static-site`, {
       stageName: props.stageName,
+      stackName: `stack-${config.projectName}-${props.stageName}-static-site`,
     });
   }
 }

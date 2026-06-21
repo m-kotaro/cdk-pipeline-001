@@ -38,7 +38,6 @@ export class StaticSiteStack extends cdk.Stack {
     const siteBucket = new s3.Bucket(this, "SiteBucket", {
       bucketName: `s3-${stageName}-${pj}-site`,
       blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL,
-      removalPolicy: cdk.RemovalPolicy.RETAIN,
       encryption: s3.BucketEncryption.S3_MANAGED,
     });
 
