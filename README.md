@@ -4,7 +4,7 @@ S3 + CloudFront の静的サイトを CDK Pipelines で dev/prd にデプロイ�
 
 ## 構成図
 
-![Architecture](./img/architecture.drawio.png)
+![Architecture](./img/architecture.drawio.svg)
 
 ---
 
